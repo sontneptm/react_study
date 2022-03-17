@@ -10,29 +10,20 @@
   <script type="text/babel">
     const root = document.getElementById("root");
 
-    const Title = () => (
-      <h1 id="title" onMouseEnter={() => console.log("mouse entered!")}>
-        hello I'm a title
-      </h1>
-    );
+    let counter = 0;
 
-    const Button = () => (
-      <button
-        style={{ backgroundColor: "tomato" }}
-        onClick={() => console.log("im clicked!!!")}
-      >
-        click me!
-      </button>
-    );
+    function countUP() {
+      counter += 1;
+      ReactDOM.render(<Container />, root);
+    }
 
-    const Container = (
+    const Container = () => (
       <div>
-        <button onClick={() => console.log("I clicked too!!")}> hello!</button>
-        <Title />
-        <Button />
+        <h1>Total clicks: {counter}</h1>
+        <button onClick={countUP}>click me!</button>
       </div>
     );
 
-    ReactDOM.render(Container, root);
+    ReactDOM.render(<Container />, root);
   </script>
 </html>
