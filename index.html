@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-</head>
-<body>
+  <head> </head>
+  <body>
     <div id="root"></div>
-</body>
-<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-<script>
+  </body>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
     const root = document.getElementById("root");
-    const h1 = React.createElement("h1", {
-        onMouseEnter: ()=> console.log("mouse enter!"),
-    }, "hello, i'm h1");
-    const btn = React.createElement("button",{
-        onClick: () => console.log("I'm clicked!"),
-        style:{
-            backgroundColor: "tomato",
-        },
-    },"click me!");
-    const contaniner = React.createElement("div",null,[h1, btn]);
 
-    ReactDOM.render(contaniner, root);
-</script>  
+    const Title = () => (
+      <h1 id="title" onMouseEnter={() => console.log("mouse entered!")}>
+        hello I'm a title
+      </h1>
+    );
+
+    const Button = () => (
+      <button
+        style={{ backgroundColor: "tomato" }}
+        onClick={() => console.log("im clicked!!!")}
+      >
+        click me!
+      </button>
+    );
+
+    const Container = (
+      <div>
+        <button onClick={() => console.log("I clicked too!!")}> hello!</button>
+        <Title />
+        <Button />
+      </div>
+    );
+
+    ReactDOM.render(Container, root);
+  </script>
 </html>
