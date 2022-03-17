@@ -10,20 +10,20 @@
   <script type="text/babel">
     const root = document.getElementById("root");
 
-    let counter = 0;
+    function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
 
-    function countUP() {
-      counter += 1;
-      ReactDOM.render(<Container />, root);
+      return (
+        <div>
+          <h1>Total clicks: {counter}</h1>
+          <button onClick={onClick}>click me!</button>
+        </div>
+      );
     }
 
-    const Container = () => (
-      <div>
-        <h1>Total clicks: {counter}</h1>
-        <button onClick={countUP}>click me!</button>
-      </div>
-    );
-
-    ReactDOM.render(<Container />, root);
+    ReactDOM.render(<App />, root);
   </script>
 </html>
