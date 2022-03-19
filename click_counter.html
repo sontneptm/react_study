@@ -11,9 +11,9 @@
     const root = document.getElementById("root");
 
     function App() {
-      const [counter, setCounter] = React.useState(0);
+      const [counter, setCounter] = React.useState(11);
       const onClick = () => {
-        setCounter(counter + 1);
+        setCounter((current) => current+1);
       };
 
       return (
