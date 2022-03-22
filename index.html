@@ -12,10 +12,28 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
+    function Btn({ text, big }) {
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            fontSize: big ? 18 : 12,
+            borderRadius: 10,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+
     function App() {
       return (
         <div>
-          <h1>Super Converter</h1>
+          <Btn text="Save Changes" big={true} />
+          <Btn text="Continue" />
         </div>
       );
     }
