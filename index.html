@@ -14,8 +14,17 @@
   <script type="text/babel">
     function App() {
       const [minutes, setMinutes] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
+
       const onChange = (event) => {
         setMinutes(event.target.value);
+      };
+
+      const onReset = () => {
+        setMinutes(0);
+      };
+      const onFlip = () => {
+        setFlipped((current) => !current);
       };
 
       return (
@@ -24,22 +33,30 @@
           <label htmlFor="minutes"> Minutes </label>
           <div>
             <input
-              value={minutes}
+              value={flipped ? minutes * 60 : minutes}
               id="minutes"
               placeholder="Minutes"
               type="number"
               onChange={onChange}
+              disabled={flipped === true}
             />
           </div>
           <h4> You want to convert {minutes}</h4>
           <label htmlFor="hours"> Hours </label>
           <div>
             <input
-              value={Math.round(minutes / 60)}
+              value={flipped ? minutes : minutes / 60}
               id="hours"
               placeholder="Hours"
               type="number"
+              onChange={onChange}
+              disabled={flipped === false}
             />
+          </div>
+
+          <div>
+            <button onClick={onReset}> RESET</button>
+            <button onClick={onFlip}> FLIP</button>
           </div>
         </div>
       );
