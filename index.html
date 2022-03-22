@@ -12,15 +12,18 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function Btn({ text, big }) {
+    function Btn({ text, onClick }) {
+      console.log(text + "was rendered");
+
       return (
         <button
+          onClick={onClick}
           style={{
             backgroundColor: "tomato",
             color: "white",
             padding: "10px 20px",
             border: 0,
-            fontSize: big ? 18 : 12,
+            fontSize: 16,
             borderRadius: 10,
           }}
         >
@@ -28,12 +31,21 @@
         </button>
       );
     }
+    const MemorizedBtn = React.memo(Btn);
 
     function App() {
+      const [text, setText] = React.useState("Save Changes");
+
+      const changeValue = () => {
+        text == "Save Changes"
+          ? setText("Revert Changes")
+          : setText("Save Changes");
+      };
+
       return (
         <div>
-          <Btn text="Save Changes" big={true} />
-          <Btn text="Continue" />
+          <Btn onClick={changeValue} text={text} />
+          <MemorizedBtn text="continue" />
         </div>
       );
     }
