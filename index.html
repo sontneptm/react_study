@@ -13,8 +13,8 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
   <script type="text/babel">
-    function Btn({ text, onClick, fontSize }) {
-      console.log(text + "was rendered");
+    function Btn({ text, onClick, fontSize = 14 }) {
+      console.log(text + " was rendered");
 
       return (
         <button
@@ -24,7 +24,6 @@
             color: "white",
             padding: "10px 20px",
             border: 0,
-            fontSize: 16,
             borderRadius: 10,
             fontSize,
           }}
@@ -36,7 +35,7 @@
     const MemorizedBtn = React.memo(Btn);
 
     Btn.propTypes = {
-      text: PropTypes.string,
+      text: PropTypes.string.isRequired,
       fontSize: PropTypes.number,
     };
 
@@ -52,7 +51,7 @@
       return (
         <div>
           <Btn onClick={changeValue} text={text} fontSize={18} />
-          <MemorizedBtn text="continue" fontSize={30} />
+          <MemorizedBtn text="continue" />
         </div>
       );
     }
