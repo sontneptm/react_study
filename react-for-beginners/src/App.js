@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+function Hello() {
+  return <h1>Hello</h1>;
+}
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const onClick = () => setCounter((prev) => prev + 1);
-
-  console.log("call an api");
+  const [showing, setShowing] = useState(false);
+  const onClick = () => setShowing((prev) => !prev);
 
   return (
     <div>
-      <h1>{counter}</h1>
-      <button onClick={onClick}> Count! </button>
+      {showing ? <Hello /> : null}
+      <button onClick={onClick}>{showing ? "HIDE" : "SHOW"}</button>
     </div>
   );
 }
