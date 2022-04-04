@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import Detail from "./routes/Detail";
 
 function App() {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/movie" element={<Detail />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
