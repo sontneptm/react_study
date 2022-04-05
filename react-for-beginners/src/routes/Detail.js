@@ -35,7 +35,7 @@ function Detail() {
           />
           <h1>{movieInfo.data.movie.title}</h1>
           <p> Rating : {movieInfo.data.movie.rating}</p>
-          <h5>{movieInfo.data.movie.description_full}</h5>{" "}
+          <h5>{movieInfo.data.movie.description_full}</h5>
         </div>
       )}
     </div>
